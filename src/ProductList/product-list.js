@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Main from './main';
 
-class ProductList extends React.Component {
+class ProductList extends Component {
     render() {
         return (
-            <section className="mainPageArea">
-                <h2>Product list component is up and running!</h2>
-            </section>
+            <Main />
         );
       }
 }
