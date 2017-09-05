@@ -6,7 +6,7 @@ class GroupList extends Component{
         const productGroupList = ProductGroup.GetMock();
         const listItems = productGroupList.map(
             (group) =>
-                <dl className="group">{group.name}</dl>
+                <dl key={group.id} className="group" onClick={() => this.props.onClick(group)}>{group.name}</dl>
             );
         return (
             <section className="groupListSection innerSection">

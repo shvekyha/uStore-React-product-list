@@ -3,6 +3,14 @@ import ProductInList from './product-in-list';
 
 class ProductsContainer extends Component{
     render(){
+        let listItems = [];
+        if (this.props.group){
+            const productList = this.props.group.productList;
+            listItems = productList.map(
+                (product) =>
+                    <ProductInList key={product.id} product={product}/>
+            );
+        }
         return (
             <section className="productsContainer">
                 <div className="cbDisplayGrid">
@@ -10,7 +18,7 @@ class ProductsContainer extends Component{
                         <input type="checkbox" />Display products in grid
                     </label>
                 </div>
-                <ProductInList />
+                {listItems}
             </section>
         );
     }
