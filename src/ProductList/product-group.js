@@ -1,4 +1,4 @@
-import { Product } from './product';
+//import { Product } from './product';
 
 export class ProductGroup {
     
@@ -11,14 +11,14 @@ export class ProductGroup {
 
   static GetMock(){
     let productList1 = [
-      {id: 1, name: "Static", description: "Static description", thumbnailURL: "../../assets/static thumbnail.PNG"},
-      {id: 2, name: "Dynamic", description: "Dynamic description", thumbnailURL: "../../assets/dynamic thumbnail.PNG"},
-      {id: 3, name: "Static2", description: "Static2 description", thumbnailURL: "../../assets/static thumbnail.PNG"},
-      {id: 4, name: "Dynamic2", description: "Dynamic2 description", thumbnailURL: "../../assets/dynamic thumbnail.PNG"}
+      {id: 1, name: "Static", description: "Static description", thumbnailURL: "../assets/static thumbnail.PNG"},
+      {id: 2, name: "Dynamic", description: "Dynamic description", thumbnailURL: "../assets/dynamic thumbnail.PNG"},
+      {id: 3, name: "Static2", description: "Static2 description", thumbnailURL: "../assets/static thumbnail.PNG"},
+      {id: 4, name: "Dynamic2", description: "Dynamic2 description", thumbnailURL: "../assets/dynamic thumbnail.PNG"}
     ];
     let productList2 = [
-      {id: 5, name: "Composite", description: "Composite description", thumbnailURL: "../../assets/composite thumbnail.jpg"},
-      {id: 6, name: "XM campaign", description: "XM campaign description", thumbnailURL: "../../assets/xm campaign thumbnail.png"}
+      {id: 5, name: "Composite", description: "Composite description", thumbnailURL: "../assets/composite thumbnail.jpg"},
+      {id: 6, name: "XM campaign", description: "XM campaign description", thumbnailURL: "../assets/xm campaign thumbnail.png"}
     ];
     
     let productGroupList = [

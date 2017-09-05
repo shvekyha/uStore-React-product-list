@@ -5,7 +5,7 @@ class Header extends Component {
         return (
             <header className="header">
                 <section className="logo">
-                    <image className="logoImage" src="./assets/XMPie.png" />
+                    <image className="logoImage" src="../assets/XMPie.png" />
                     <label className="userGreeting">Hello user.</label>
                 </section>
                 <section className="navigation">
