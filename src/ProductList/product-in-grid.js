@@ -13,7 +13,7 @@ class ProductInGrid extends Component {
                     <span className="productDescription">{product.description}</span>
                 </div>
                 <div className="placeAnOrder">
-                    <button className="btnPlaceAnOrder">Place an order ></button>
+                    <button className="btnPlaceAnOrder" onClick={() => this.props.onClick()}>Place an order ></button>
                 </div>
                 <hr />        
             </div>       
