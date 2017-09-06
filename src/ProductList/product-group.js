@@ -18,7 +18,8 @@ export class ProductGroup {
     ];
     let productList2 = [
       {id: 5, name: "Composite", description: "Composite description", thumbnailURL: "../assets/composite thumbnail.jpg"},
-      {id: 6, name: "XM campaign", description: "XM campaign description", thumbnailURL: "../assets/xm campaign thumbnail.png"}
+      {id: 6, name: "XM campaign", description: "XM campaign description", thumbnailURL: "../assets/xm campaign thumbnail.png"},
+      {id: 7, name: "XM campaign2", description: "XM campaign2 description", thumbnailURL: "../assets/xm campaign thumbnail.png"}
     ];
     
     let productGroupList = [

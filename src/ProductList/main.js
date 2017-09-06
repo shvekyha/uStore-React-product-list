@@ -20,7 +20,7 @@ class Main extends Component{
                 <GroupList onClick={(group) => this.groupClick(group)}/>
                 <section className="productsSection innerSection">
                     <GroupTitle group={this.state.selectedGroup}/>
-                    <ProductsContainer group={this.state.selectedGroup}/>
+                    {(this.state.selectedGroup !== '')? <ProductsContainer group={this.state.selectedGroup}/> : ''}
                 </section>
             </section>
         );

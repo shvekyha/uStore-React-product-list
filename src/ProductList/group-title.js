@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 class GroupTitle extends Component{
     render(){
-        
+        const group = this.props.group;
         return (
             <section className="groupTitle">
-                <h2 className="groupName">{this.props.group.name}</h2>
-                <h3 className="groupDescription">{this.props.group.description}</h3>
+                <h2 className="groupName">{group.name}</h2>
+                <h3 className="groupDescription">{group.description}</h3>
             </section>
         );
     }

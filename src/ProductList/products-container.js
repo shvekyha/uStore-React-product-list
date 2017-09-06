@@ -1,27 +1,43 @@
 import React, { Component } from 'react';
-import ProductInList from './product-in-list';
+import ProductDisplay from './product-display';
 
 class ProductsContainer extends Component{
+    constructor(){
+        super();
+        this.state = {
+            currentView : 'list',
+        }
+
+        // This binding is necessary to make `this` work in the callback
+        this.onCheckToggle = this.onCheckToggle.bind(this);
+    }
+
     render(){
         let listItems = [];
         if (this.props.group){
             const productList = this.props.group.productList;
             listItems = productList.map(
-                (product) =>
-                    <ProductInList key={product.id} product={product}/>
+                (product, index) =>
+                    <ProductDisplay index={index+1} key={product.id} product={product} currentView={this.state.currentView}/>
             );
         }
         return (
             <section className="productsContainer">
                 <div className="cbDisplayGrid">
                     <label>
-                        <input type="checkbox" />Display products in grid
+                        <input type="checkbox" onChange={this.onCheckToggle}/>Display products in grid
                     </label>
                 </div>
                 {listItems}
             </section>
         );
     }
+
+    onCheckToggle(event){
+        const view = event.target.checked ? 'grid' : 'list';
+        this.setState({currentView : view});
+    }
+
 }
 
 export default ProductsContainer;
