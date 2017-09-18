@@ -14,13 +14,12 @@ class ProductsContainer extends Component{
 
     render(){
         let listItems = [];
-        if (this.props.group){
-            const productList = this.props.group.productList;
-            listItems = productList.map(
-                (product, index) =>
-                    <ProductDisplay index={index+1} key={product.id} product={product} currentView={this.state.currentView}/>
-            );
-        }
+        const productList = this.props.group.productList;
+        listItems = productList.map(
+            (product, index) =>
+                <ProductDisplay index={index+1} key={product.id} product={product} currentView={this.state.currentView}/>
+        );
+
         return (
             <section className="productsContainer">
                 <div className="cbDisplayGrid">

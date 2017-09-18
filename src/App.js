@@ -10,11 +10,13 @@ class App extends Component {
     return (
       <section className="mainPageArea">
           <Header />
-          <Switch>
-            <Route exact path='/' component={ProductList}/>
-            <Route path='/productList' component={ProductList}/>
-            <Route path='/productDetails/:id' component={ProductDetails}/>
-          </Switch>
+          <section className="main">
+            <Switch>
+              <Route exact path='/' component={ProductList}/>
+              <Route path='/productList/:groupID?' component={ProductList}/>
+              <Route path='/productDetails/:productID' component={ProductDetails}/>
+            </Switch>
+          </section>
       </section>
     );
   }

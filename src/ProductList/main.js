@@ -6,8 +6,14 @@ import ProductsContainer from './products-container';
 class Main extends Component{
     constructor(props) {
         super(props);
+
+        let selectedGroup = "";
+        if (this.props.selectedGroup){
+            selectedGroup = this.props.selectedGroup;
+        }
+        
         this.state = {
-            selectedGroup:"",
+            selectedGroup:selectedGroup,
         };
 
         // This binding is necessary to make `this` work in the callback
@@ -16,7 +22,7 @@ class Main extends Component{
     
     render(){
         return (
-            <section className="main">
+            <section>
                 <GroupList onClick={(group) => this.groupClick(group)}/>
                 <section className="productsSection innerSection">
                     <GroupTitle group={this.state.selectedGroup}/>
