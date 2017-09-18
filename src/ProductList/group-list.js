@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import ProductGroup from './product-group';
+import ProductService from './product-service';
 
 class GroupList extends Component{
     render(){
-        const productGroupList = ProductGroup.GetMock();
+        const productGroupList = ProductService.GetMock();
         const listItems = productGroupList.map(
             (group) =>
                 <dl key={group.id} className="group" onClick={() => this.props.onClick(group)}>{group.name}</dl>
