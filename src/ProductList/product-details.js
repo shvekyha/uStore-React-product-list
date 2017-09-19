@@ -7,6 +7,7 @@ class ProductDetails extends Component {
         super();
         this.state = {
             redirect : false,
+            service : new ProductService(),
         }
 
         // This binding is necessary to make `this` work in the callback
@@ -15,14 +16,14 @@ class ProductDetails extends Component {
     
     render() {
         if (this.state.redirect === true){
-            const group = ProductService.getGroupByProductID(this.props.match.params.productID);
+            const group = this.state.service.getGroupByProductID(this.props.match.params.productID);
             const redirectPath = '/productList/'+ group.id;
             return <Redirect to={redirectPath}/>;
         }
         else {
             const productID = this.props.match.params.productID;
             //console.log('ProductDetails this.props.match: '+this.props.match.params.productID);
-            const product = ProductService.getProduct(productID);
+            const product = this.state.service.getProduct(productID);
             let buttonText = "< Back";
             return (
                 <section className="innerSection">
