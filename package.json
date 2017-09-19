@@ -2,6 +2,7 @@
   "name": "react-ustore-product-list",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://hadassh/uStore/react-uStore-product-list",
   "dependencies": {
     "history": "^4.7.2",
     "react": "^15.6.1",
