@@ -5,6 +5,28 @@ export class ProductService {
         console.log('ProductService constructor');
     }
 
+    static GetFetchRequest(){
+        let headers = new Headers({
+            'Content-Type' : 'application/x-www-form-urlencoded', //'application/json',
+            'Accept': 'application/json',
+        });
+        
+        let url = 'http://hadassh/ustore/api/ProductList/GetProductGroups';
+        let params = 'storeid=5&userid=3&cultureid=1'
+        url = `${url}?${params}`;
+
+        let fetchInit = {
+            method: 'GET',
+            headers: headers,
+            mode: 'cors',
+            credentials: 'include'
+        };
+
+        let request = new Request(url, fetchInit);
+
+        return request;
+    }
+
     static GetMockFromWebAPI(){
         let returnObj;
 
@@ -31,34 +53,30 @@ export class ProductService {
         return returnObj;
     }
 
-    getProduct(productID){
-        let groupList = this.productGroupList;
-
-        for (let i=0; i<groupList.length; i++){
-            let product = groupList[i].productList.find(p => p.id === parseInt(productID,10));
+    static getProduct(productID, productGroupList){
+        for (let i=0; i<productGroupList.length; i++){
+            let product = productGroupList[i].productList.find(p => p.id === parseInt(productID,10));
             if (product !== undefined){
                 return product;
             }
         };
-
+        
         return null;
     }
 
-    getGroupByProductID(productID){
-        let groupList = this.productGroupList;
-
-        for (let i=0; i<groupList.length; i++){
-            let product = groupList[i].productList.find(p => p.id === parseInt(productID,10));
+    static getGroupByProductID(productID, productGroupList){
+        for (let i=0; i<productGroupList.length; i++){
+            let product = productGroupList[i].productList.find(p => p.id === parseInt(productID,10));
             if (product !== undefined){
-                return groupList[i];
+                return productGroupList[i];
             }
         };
+        
         return null;
     }
 
-    getGroup(groupID){
-        let groupList = this.productGroupList;
-        let groupToReturn = groupList.find(g => g.id === parseInt(groupID,10));
+    static getGroup(groupID, productGroupList){
+        let groupToReturn = productGroupList.find(g => g.id === parseInt(groupID,10));
         
         return groupToReturn;
     }

@@ -42,7 +42,7 @@ class Main extends Component{
     }
 
     FetchProductGroupData(){
-        console.log('Main GetProductGroupData');
+        console.log('Main FetchProductGroupData');
         let getRealMock = false;
         if (getRealMock === true){
             console.log('getting mock data');
@@ -55,24 +55,8 @@ class Main extends Component{
             console.log('getting real data');
 
             let that = this;
-            let headers = new Headers({
-                'Content-Type' : 'application/x-www-form-urlencoded', //'application/json',
-                'Accept': 'application/json',
-            });
-            
-            let url = 'http://hadassh/ustore/api/ProductList/GetProductGroups';
-            let params = 'storeid=5&userid=3&cultureid=1'
-            url = `${url}?${params}`;
 
-            let fetchInit = {
-                method: 'GET',
-                headers: headers,
-                mode: 'cors',
-                credentials: 'include'
-            };
-
-            let request = new Request(url, fetchInit);
-
+            let request = ProductService.GetFetchRequest();
             fetch(request)
             .then(function(response) {
                 var contentType = response.headers.get("content-type");
@@ -86,7 +70,6 @@ class Main extends Component{
                 that.setState({
                     productGroupList : JSON.parse(json),
                 });
-                console.log('productGroupList.length: '+this.state.productGroupList.length);
             })
             .catch(function(error) { 
                 console.log(error);
