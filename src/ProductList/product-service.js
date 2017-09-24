@@ -1,51 +1,8 @@
 
-
 export class ProductService {
 
     constructor(){
-        this.productGroupList = ProductService.GetProductGroupData(); 
-    }
-
-    static GetProductGroupData(){
-        let getRealMock = false;
-        if (getRealMock === true){
-            console.log('getting mock data');
-            let productGroupMock = ProductService.GetMockFromWebAPI();
-            return productGroupMock;
-        }
-        else{
-            console.log('getting real data');
-
-            let headers = new Headers({'ContentType' : 'application/json'});
-            let initObj = {
-                method: 'GET',
-                headers: headers,
-                mode: 'cors',
-                cache: 'default',
-                credentials: 'include'
-            };
-
-            let url = 'http://hadassh/ustore/api/ProductList/GetProductGroups';
-            let params = 'storeid=5&userid=3&cultureid=1'
-            url = `${url}?${params}`;
-            
-            let request = new Request(url, initObj);
-
-            fetch(request).then(function(response) {
-                var contentType = response.headers.get("content-type");
-                if(contentType && contentType.includes("application/json")) {
-                    return response.json();
-                }
-                throw new TypeError("Oops, we haven't got JSON!");
-            })
-            .then(function(json) { 
-                console.log(json);
-                return json;
-            })
-            .catch(function(error) { 
-                console.log(error);
-            });            
-        }
+        console.log('ProductService constructor');
     }
 
     static GetMockFromWebAPI(){
