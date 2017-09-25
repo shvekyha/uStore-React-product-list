@@ -19,10 +19,12 @@ class ProductDisplay extends Component{
             return <Redirect to={redirectPath}/>;
         }
 
+        const baseURL = 'http://localhost/';
+
         let productDisplay = null;
         productDisplay = this.props.currentView === 'list'?
-            <ProductInList product={this.props.product} onClick={() => this.onPlaceAnOrderClick()}/> :
-            <ProductInGrid product={this.props.product} onClick={() => this.onPlaceAnOrderClick()}/>;
+            <ProductInList product={this.props.product} onClick={() => this.onPlaceAnOrderClick()} baseURL={baseURL}/> :
+            <ProductInGrid product={this.props.product} onClick={() => this.onPlaceAnOrderClick()} baseURL={baseURL}/>;
 
         return(
             <span>

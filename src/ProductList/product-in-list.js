@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 class ProductInList extends Component {
     render() {
         const product = this.props.product;
+        const imageSrc = this.props.baseURL + product.thumbnailURL;
         return (
             <div className="product list">
                 <div className="productThumbnail">
-                    <img className="productThumbnailImage" src={product.thumbnailURL} alt="product thumbnail"/>
+                    <img className="productThumbnailImage" src={imageSrc} alt="product thumbnail"/>
                 </div>
                 <div className="productInfo">
                     <div><label className="productName">{product.name}</label></div>

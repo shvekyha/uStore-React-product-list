@@ -39,14 +39,14 @@ class Main extends Component{
 
     render(){        
         console.log('Main render()');
-        
+
         let selectedGroup = this.state.selectedGroup;
         return (
             <section>
                 <GroupList onClick={(group) => this.groupClick(group)} productGroupList={this.state.productGroupList}/>
                 <section className="productsSection innerSection">
                     {(selectedGroup !== null)? <GroupTitle group={selectedGroup}/> : '' }
-                    {(selectedGroup !== null)? <ProductsContainer group={selectedGroup} productGroupList={this.state.productGroupList}/> : '' }
+                    {(selectedGroup !== null)? <ProductsContainer group={selectedGroup}/> : '' }
                 </section>
             </section>
         );
