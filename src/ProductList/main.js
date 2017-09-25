@@ -18,6 +18,19 @@ class Main extends Component{
         this.groupClick = this.groupClick.bind(this);
     }
 
+    //this event fires when props is updated outside of the component. 
+    //implementing this in order to set the state before the render
+    componentWillReceiveProps(nextProps){
+        console.log('Main componentWillReceiveProps()');
+        if (this.props.selectedGroup !== nextProps.selectedGroup){
+            this.setState({
+                selectedGroup : nextProps.selectedGroup,
+            })
+        }
+    }
+
+    //this event fires just after the component was added to DOM.
+    //this is the recommended place to fetch data. 
     componentDidMount() {
         console.log('Main componentDidMount()');
 
@@ -26,13 +39,8 @@ class Main extends Component{
 
     render(){        
         console.log('Main render()');
-        let selectedGroup = null;
-        if (this.state.selectedGroup !== null){
-            selectedGroup = this.state.selectedGroup;
-        }
-        else if (this.props.selectedGroup){
-            selectedGroup = this.props.selectedGroup;
-        }
+        
+        let selectedGroup = this.state.selectedGroup;
         return (
             <section>
                 <GroupList onClick={(group) => this.groupClick(group)} productGroupList={this.state.productGroupList}/>
