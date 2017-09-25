@@ -147,13 +147,22 @@ header{
 }
 
 .productThumbnailImage{
-    height: 50px;
-    width: 50px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
 	margin-bottom: 10px;
-	display: block;
+    display: block;
+    border: 1px solid #e6e6e6;
+}
+
+.list .productThumbnailImage{
+    height: 50px;
+    width: 50px;
+}
+
+.grid .productThumbnailImage{
+    height: 70px;
+    width: 70px;
 }
 
 .list .productInfo{
