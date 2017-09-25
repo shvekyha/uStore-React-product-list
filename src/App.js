@@ -13,7 +13,7 @@ class App extends Component {
           <section className="main">
             <Switch>
               <Route exact path='/' component={ProductList}/>
-              <Route path='/productList/:groupID?' component={ProductList}/>
+              <Route path='/productList/:groupID' component={ProductList}/>
               <Route path='/productDetails/:productID' component={ProductDetails}/>
             </Switch>
           </section>

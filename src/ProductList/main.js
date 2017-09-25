@@ -8,15 +8,11 @@ class Main extends Component{
     constructor(props) {
         super(props);
 
-        let selectedGroup = "";
-        if (this.props.selectedGroup){
-            selectedGroup = this.props.selectedGroup;
-        }
-        
         this.state = {
-            selectedGroup:selectedGroup,
+            selectedGroup: (props.selectedGroup? props.selectedGroup : null),
             productGroupList: [],        
         };
+        console.log('Main constructor selectedGroup: '+this.state.selectedGroup);
 
         // This binding is necessary to make `this` work in the callback
         this.groupClick = this.groupClick.bind(this);
@@ -28,14 +24,21 @@ class Main extends Component{
         this.FetchProductGroupData();
     }
 
-    render(){
+    render(){        
         console.log('Main render()');
+        let selectedGroup = null;
+        if (this.state.selectedGroup !== null){
+            selectedGroup = this.state.selectedGroup;
+        }
+        else if (this.props.selectedGroup){
+            selectedGroup = this.props.selectedGroup;
+        }
         return (
             <section>
                 <GroupList onClick={(group) => this.groupClick(group)} productGroupList={this.state.productGroupList}/>
                 <section className="productsSection innerSection">
-                    <GroupTitle group={this.state.selectedGroup}/>
-                    {(this.state.selectedGroup !== '')? <ProductsContainer group={this.state.selectedGroup} productGroupList={this.state.productGroupList}/> : ''}
+                    {(selectedGroup !== null)? <GroupTitle group={selectedGroup}/> : '' }
+                    {(selectedGroup !== null)? <ProductsContainer group={selectedGroup} productGroupList={this.state.productGroupList}/> : '' }
                 </section>
             </section>
         );
@@ -66,7 +69,7 @@ class Main extends Component{
                 throw new TypeError("Oops, we haven't got JSON!");
             })
             .then(function(json) { 
-                console.log(json, typeof json);
+                //console.log(json, typeof json);
                 that.setState({
                     productGroupList : JSON.parse(json),
                 });

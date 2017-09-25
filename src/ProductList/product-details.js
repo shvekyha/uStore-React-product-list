@@ -3,8 +3,8 @@ import { ProductService } from './product-service';
 import { Redirect } from 'react-router';
 
 class ProductDetails extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             redirect : false,
             productGroupList: [],        
@@ -42,7 +42,7 @@ class ProductDetails extends Component {
     }
 
     FetchProductGroupData(){
-        console.log('Main FetchProductGroupData');
+        console.log('ProductDetails FetchProductGroupData');
 
         let that = this;
         
@@ -56,7 +56,7 @@ class ProductDetails extends Component {
             throw new TypeError("Oops, we haven't got JSON!");
         })
         .then(function(json) { 
-            console.log(json, typeof json);
+            //console.log(json, typeof json);
             that.setState({
                 productGroupList : JSON.parse(json),
             });

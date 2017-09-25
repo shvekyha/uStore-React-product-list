@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import ProductDisplay from './product-display';
 
 class ProductsContainer extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             currentView : 'list',
         }

@@ -7,8 +7,8 @@ import { Redirect } from 'react-router';
 //export const history = createHistory();
 
 class ProductDisplay extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             redirect : false,
         }

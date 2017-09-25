@@ -3,28 +3,63 @@ import Main from './main';
 import ProductService from './product-service';
 
 class ProductList extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-            service : new ProductService(),
+            selectedGroup : null,
+            productGroupList: [],
         }
     }
     
+    componentDidMount() {
+        console.log('ProductList componentDidMount()');
+
+        this.FetchProductGroupData();        
+    }
+
     render() {
-        let selectedGroup = null;
-        //console.log('ProductList group: '+group);
+        console.log('ProductList render selectedGroup: '+this.state.selectedGroup);
+        return (
+            <Main selectedGroup={this.state.selectedGroup}/>
+        );
+    }
+
+    FetchProductGroupData(){
+        console.log('ProductList FetchProductGroupData');
+
+        let that = this;
+        
+        let request = ProductService.GetFetchRequest();
+        fetch(request)
+        .then(function(response) {
+            var contentType = response.headers.get("content-type");
+            if(contentType && contentType.includes("application/json")) {
+                return response.json();
+            }
+            throw new TypeError("Oops, we haven't got JSON!");
+        })
+        .then(function(json) { 
+            //console.log(json, typeof json);
+            that.setState({
+                productGroupList : JSON.parse(json),
+            });
+            that.UpdateSelectedgroup();
+        })
+        .catch(function(error) { 
+            console.log(error);
+        });            
+        
+    }
+
+    UpdateSelectedgroup(){
         if (this.props.match && this.props.match.params.groupID !== undefined){
             let groupID = this.props.match.params.groupID;
-            let group = this.state.service.getGroup(groupID);
-            console.log('ProductList group: '+group);
-            selectedGroup = group;
-            
+            let group = ProductService.getGroup(groupID, this.state.productGroupList);
+            this.setState({
+                selectedGroup : group,
+            });
         }
-
-        return (
-            <Main selectedGroup={selectedGroup}/>
-        );
-      }
+    }
 }
 
 export default ProductList;
