@@ -163,12 +163,17 @@ header{
 .grid .productThumbnailImage{
     height: 70px;
     width: 70px;
+    position: relative;
+    top: 10px;
 }
 
 .list .productInfo{
     float: left;
     margin: 0px 10px;
     width: 540px;
+}
+.grid .productInfo{
+    margin-left: 30px;
 }
 .list .placeAnOrder{
     float: right;
@@ -183,6 +188,7 @@ header{
     width: 150px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 40px;
     display: block;
     background-color:white;
 }

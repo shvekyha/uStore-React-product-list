@@ -32,7 +32,7 @@ class ProductDetails extends Component {
             let buttonText = "< Back";
             return (
                 <section className="innerSection">
-                    <span>Here are the details for product: {(product !== null)? product.name : ''}</span>
+                    <h1>Here are the details for product:</h1><h2>{(product !== null)? product.name : ''}</h2>
                     <div className="back">
                     <button onClick={this.onClickBack}>{buttonText}</button>
                     </div>
